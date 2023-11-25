@@ -1,6 +1,253 @@
 text,label
-How is your Friday so far,date
-What do you want me to address you?,name
+Howdy Partner!,greeting
+Hello,greeting
+How are you doing?,greeting
+Greetings!,greeting
+How do you do?,greeting
+Hi there!,greeting
+Good day!,greeting
+Hey!,greeting
+What's up?,greeting
+Nice to see you!,greeting
+Hi! how are you?,greeting
+Hola!,greeting
+Good to meet you!,greeting
+Hey! what's going on?,greeting
+Greetings and salutations!,greeting
+Hi! how's your day?,greeting
+Hello! friend!,greeting
+Hey! how's it going?,greeting
+Hi! nice to talk to you!,greeting
+What do you want me to address you?, name
+What should I call you?,name
+May I know your name?,name
+What's your preferred name?,name
+Could you share your name with me?,name
+Do you have a name you'd like me to use?,name
+Tell me what do you go by?,name
+I'd like to address you by name. What is it?,name
+Is there a name you'd like me to refer to you as?,name
+Please let me know how you'd like to be addressed.,name
+Could you share the name you prefer?,name
 How is your day going so far,date
 How is Sunday going,date
-I have to sign off, goodbye
+How has your week been so far?,date
+Any plans for this weekend?,date
+Tell me about your experience on Monday.,date
+What's your schedule for today?,date
+How was your day on Tuesday?,date
+Got any exciting plans for Friday night?,date
+How's your Wednesday shaping up?,date
+Tell me about your Thursday.,date
+How's your weekend going?,date
+Any special events planned for Sunday?,date
+What are your thoughts on Saturday?,date
+How was your experience on a past Monday?,date
+Do you have any favorite days of the week?,date
+Tell me about your activities last Sunday.,date
+How did your Tuesday unfold?,date
+I have to sign off,goodbye
+I have to head out,goodbye
+It was nice talking to you,goodbye
+Time for me to go,goodbye
+I'll catch you later,goodbye
+Gotta run,goodbye
+Until we meet again,goodbye
+Take care,goodbye
+I'm signing off for now,goodbye
+See you soon,goodbye
+Farewell for now,goodbye
+It's time for me to say goodbye,goodbye
+I'll talk to you later,goodbye
+I'm off,goodbye
+Until next time,goodbye
+I'm saying my goodbyes,goodbye
+How old are you?,age
+May I inquire about your age?,age
+Do you mind sharing your age?,age
+Could you let me know how many years you've been around?,age
+I'm curious what's your age?,age
+Can you tell me your age?,age
+What's the number of years you've lived so far?,age
+I'd like to know your age if you don't mind sharing.,age
+How many birthdays have you celebrated?,age
+If you're comfortable could you share your age?,age
+What's your age group?,age
+Can you provide some insight into your age?,age
+May I ask how old you are?,age
+I'm interested in learning your age.,age
+Could you disclose your age for me?,age
+Thank you so much!,thanks
+I appreciate your help!,thanks
+Thanks a bunch!,thanks
+Thanks a million!,thanks
+Thanks a ton!,thanks
+Thanks for your assistance!,thanks
+I'm grateful for your support!,thanks
+Many thanks!,thanks
+Thank you very much!,thanks
+Thanks a bunch for your time!,thanks
+I want to express my gratitude!,thanks
+A big thank you!,thanks
+Thanks a lot!,thanks
+I'm thankful for your help!,thanks
+I owe you one,thanks
+Can you help me with something?,help
+I could use some assistance.,help
+I'm stuck. Can you help?,help
+I need your help.,help
+Could you lend me a hand?,help
+I'm looking for some guidance.,help
+Can you assist me with this?,help
+I could use your expertise.,help
+Help me out please.,help
+I'm in a bit of a pickle. Can you help?,help
+I need some support. Can you help me?,help
+Could you provide some assistance?,help
+I'm struggling with this. Can you help me?,help
+Can you offer some help?,help
+I'm not sure what to do. Can you help?,help
+Why did the scarecrow win an award? Because he was outstanding in his field!,jokes
+Knock knock. Who's there? Lettuce. Lettuce who? Lettuce in it's cold out here!,jokes
+Why don't scientists trust atoms? Because they make up everything!,jokes
+What do you call fake spaghetti? An impasta!,jokes
+Why did the bicycle fall over? Because it was two-tired!,jokes
+What's orange and sounds like a parrot? A carrot!,jokes
+Why did the tomato turn red? Because it saw the salad dressing!,jokes
+How does a penguin build its house? Igloos it together!,jokes
+What did one ocean say to the other ocean? Nothing they just waved!,jokes
+Why don't skeletons fight each other? They don't have the guts!,jokes
+Why did the math book look sad? Because it had too many problems!,jokes
+What did one hat say to the other? Stay here I'm going on ahead!,jokes
+Why did the coffee file a police report? It got mugged!,jokes
+How do you organize a space party? You planet!,jokes
+What's a vampire's favorite fruit? A blood orange!,jokes
+Tell me a joke.,jokes
+Can you share a joke with me?,jokes
+I could use a good laugh. Tell me a joke.,jokes
+How about lightening the mood with a joke?,jokes
+Do you know any jokes? Share one!,jokes
+I need a pick-me-up. Tell me a joke!,jokes
+In the mood for some humor. Hit me with a joke!,jokes
+Entertain me with a joke.,jokes
+Feeling a bit down. Can you cheer me up with a joke?,jokes
+I'm ready for a good laugh. What's your best joke?,jokes
+Let's hear a joke.,jokes
+Feeling bored. Got a joke to share?,jokes
+Make me smile. Tell me a joke!,jokes
+I'm all ears for a funny joke. What do you have?,jokes
+Tell me something funny.,jokes
+Do you like music?,music
+What's your opinion on music?,music
+Are you a fan of music?,music
+Can you enjoy listening to music?,music
+Is music something you appreciate?,music
+Do you have a favorite music genre?,music
+Tell me do you have a favorite song?,music
+I'm curious do you listen to music?,music
+What's your take on the world of music?,music
+Can you share your thoughts on music?,music
+Are you into any specific music artists?,music
+Do you have a favorite music album?,music
+Is music something that resonates with you?,music
+Can you recommend a good music track?,music
+What's your relationship with music?,music
+How is the weather today?,weather
+Can you tell me about the current weather?,weather
+What's the weather like right now?,weather
+Do you have the latest weather update?,weather
+How's the weather outside?,weather
+Give me the scoop on today's weather.,weather
+I'm curious about the weather. What's it like?,weather
+Tell me about the weather conditions.,weather
+Is it sunny or cloudy today?,weather
+Can you provide a weather forecast?,weather
+What should I expect from the weather today?,weather
+Give me the weather report for today.,weather
+Do you know the temperature outside?,weather
+I want to know about the weather. Any updates?,weather
+What's the weather situation currently?,weather
+What do you think about movies?,movies
+Can you share your thoughts on films?,movies
+I'm curious about your opinion on movies.,movies
+Do you enjoy watching movies?,movies
+Tell me what's your take on the world of cinema?,movies
+What are your thoughts on the latest movies?,movies
+Give me your perspective on films.,movies
+I'm interested in knowing your views on movies.,movies
+Can you recommend a good movie?,movies
+What's your favorite movie genre?,movies
+Do you have any favorite films?,movies
+Tell me about a movie you recently watched.,movies
+What's your go-to movie for a relaxing evening?,movies
+Give me a movie recommendation.,movies
+Any favorite directors or actors in the movie industry?,movies
+What food do you like?,food
+Tell me about your favorite dish.,food
+Do you have a preferred cuisine?,food
+I'm curious what's your go-to meal?,food
+Can you recommend a good restaurant?,food
+What's your favorite type of food?,food
+Do you enjoy trying new dishes?,food
+Tell me about a memorable food experience.,food
+I'm hungry. Any food recommendations?,food
+Do you have a favorite comfort food?,food
+What's your take on spicy food?,food
+Can you share a recipe you like?,food
+I'm looking for a delicious meal. Any suggestions?,food
+Tell me about a unique food you've tried.,food
+I want to know your favorite snack.,food
+do you like to travel?,travel
+Have you been on any exciting trips lately?,travel
+Tell me about your favorite travel destination.,travel
+I'm always up for a good road trip. How about you?,travel
+Do you have a travel bucket list?,travel
+What's your take on traveling?,travel
+Any memorable travel experiences you'd like to share?,travel
+Exploring different cultures is fascinating. Do you agree?,travel
+I heard you enjoy going on adventures. Tell me more about it.,travel
+Have you discovered any hidden gems during your travels?,travel
+I'm curious about your dream destinations. Care to share?,travel
+Traveling broadens your perspective. How has it influenced you?,travel
+I enjoy the journey as much as the destination. Do you feel the same?,travel
+Every place has its own unique charm. What's your favorite so far?,travel
+Tell me about a place you'd love to visit.,travel
+I'd love to hear about your travel adventures.,travel
+what are your hobbies?,hobbies
+Tell me about your favorite hobbies.,hobbies
+What do you enjoy doing in your free time?,hobbies
+Do you have any specific hobbies you're passionate about?,hobbies
+Share a bit about your hobbies and interests.,hobbies
+I'm curious what activities do you enjoy as hobbies?,hobbies
+What are your go-to hobbies for relaxation?,hobbies
+Can you tell me about the things you like to do for fun?,hobbies
+Any particular hobbies you find rewarding?,hobbies
+Do you have a favorite hobby that you often engage in?,hobbies
+I want to know more about your hobbies. Care to share?,hobbies
+How do you like to spend your leisure time? Tell me about your hobbies.,hobbies
+Are there any specific activities you consider as hobbies?,hobbies
+I'd love to hear about the things you enjoy doing in your free time. What are your hobbies?,hobbies
+Tell me about the hobbies that bring you joy.,hobbies
+What are your favorite pastimes or hobbies?,hobbies
+what are your views on technology?,technology
+Tell me about your thoughts on the latest technology trends.,technology
+How do you feel about artificial intelligence and machine learning?,technology
+Share your perspective on coding and software development.,technology
+Do you have any favorite gadgets or tech innovations?,technology
+What's your take on cybersecurity and its importance?,technology
+Can you tell me your thoughts on blockchain technology?,technology
+How do you perceive virtual reality and augmented reality?,technology
+What are your views on nanotechnology and its advancements?,technology
+Share your thoughts on innovations in quantum computing.,technology
+How do you see the intersection of technology and healthcare?,technology
+Tell me about your opinions on biotechnology and genetic engineering.,technology
+How do you feel about space technology and exploration?,technology
+Share your perspective on robotics and automation.,technology
+What's your take on the Internet of Things (IoT)?,technology
+Tell me about your views on open-source software and collaborative development.,technology
+How do you perceive drones and their applications in various industries?,technology
+What are your thoughts on quantum cryptography?,technology
+How do you keep up with developments in renewable energy technology?,technology
+Share your views on smart cities and urban technology planning.,technology
+What are your opinions on the ethical considerations of emerging technologies?,technology
+How do you follow developments in telecommunications and 5G technology?,technology

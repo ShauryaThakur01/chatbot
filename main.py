@@ -21,7 +21,15 @@ data = {"intents": [
     {"tag": "weather",
      "responses": ["The weather is nice today.", "I can look up the weather for you. Where are you located?", "Sunny days are the best!"]},
     {"tag": "movies",
-     "responses": ["What's your favorite movie genre?", "I enjoy watching movies too.", "Movies are a great way to relax."]}
+     "responses": ["What's your favorite movie genre?", "I enjoy watching movies too.", "Movies are a great way to relax."]},
+    {"tag": "food",
+     "responses": ["I love Indian food", "I enjoy cooking food", "I am Foodie!"]},
+    {"tag": "travel",
+     "responses": ["I love exploring new places!", "Traveling is one of my passions.", "I enjoy going on adventures.", "I have a long list of dream destinations.", "Tell me about your favorite travel destination.", "I'm always up for a good road trip.", "Traveling allows you to discover so much.", "Have you been on any exciting trips lately?", "Exploring different cultures is fascinating.", "I have a travel bucket list. Do you?", "I enjoy the journey as much as the destination.", "Share a memorable travel experience with me.", "Traveling broadens your perspective.", "I'd love to hear about your travel adventures.", "Every place has its own unique charm.", "Tell me about a place you'd love to visit."]},
+    {"tag": "hobbies",
+     "responses": ["I have a passion for painting and drawing.", "Reading books is one of my favorite hobbies.", "I enjoy playing musical instruments in my free time.", "Gardening is a relaxing hobby I like to indulge in.", "Cooking and experimenting with new recipes bring me joy.", "I love hiking and exploring nature trails.", "Photography is a hobby that allows me to capture beautiful moments.", "I'm a fitness enthusiast and enjoy various workout routines.", "Learning new languages is a hobby I find both challenging and rewarding.", "I like to spend my weekends crafting and DIY projects.", "Board games and puzzles are my go-to for entertainment.", "I'm into meditation and mindfulness as part of my daily routine.", "Sports like tennis and cycling are activities I engage in regularly.", "Writing poetry and stories is a creative outlet for me.", "I enjoy coding and building software in my spare time.", "Collecting rare coins and stamps is a unique hobby of mine.", "I find astronomy fascinating and stargazing is a hobby I pursue.", "I'm an avid gamer and love exploring virtual worlds.", "Yoga is a part of my daily routine for mental and physical well-being.", "I'm a history buff and love exploring historical sites.", "I find joy in volunteering and contributing to social causes."]},
+    {"tag": "technology",
+     "responses": ["I find the latest technology trends fascinating.", "Artificial intelligence and machine learning intrigue me.", "I'm into coding and software development.", "Exploring new gadgets is one of my interests.", "Cybersecurity is a field I pay close attention to.", "I'm curious about the potential of blockchain technology.", "Virtual reality and augmented reality are exciting areas of exploration for me.", "The rapid advancements in nanotechnology captivate my interest.", "I keep up with innovations in quantum computing.", "I'm fascinated by the intersection of technology and healthcare.", "Biotechnology and genetic engineering are topics I find intriguing.", "I enjoy learning about space technology and exploration.", "Robotics and automation are areas where I see immense potential.", "The Internet of Things (IoT) is a concept I find interesting.", "I'm a fan of open-source software and collaborative development.", "Drones and their applications in various industries fascinate me.", "Quantum cryptography is a field I find intellectually stimulating.", "I keep an eye on the developments in renewable energy technology.", "Smart cities and urban technology planning are areas of interest for me.", "I'm interested in the ethical considerations of emerging technologies.", "Telecommunications and 5G technology are subjects I follow closely."]}
 ]}
 import gradio as gr
 import numpy as np
@@ -30,8 +38,9 @@ import re
 import torch
 import random
 import torch.nn as nn
-import transformers
+# import transformers
 import matplotlib.pyplot as plt
+import threading
 
 # We have prepared a chitchat dataset with 5 labels
 df = pd.read_csv(r'datasetforchatbot.csv')
@@ -87,6 +96,16 @@ tokens_train = tokenizer(
     return_token_type_ids=False
 )
 
+# unique_labels = np.unique(train_labels)
+# print("Unique Labels:", unique_labels)
+#
+# from sklearn.preprocessing import LabelEncoder
+#
+# le = LabelEncoder()
+# df['label'] = le.fit_transform(df['label'])
+
+
+
 # for train set
 train_seq = torch.tensor(tokens_train['input_ids'])
 train_mask = torch.tensor(tokens_train['attention_mask'])
@@ -115,7 +134,8 @@ class BERT_Arch(nn.Module):
        # dense layer
        self.fc1 = nn.Linear(768,512)
        self.fc2 = nn.Linear(512,256)
-       self.fc3 = nn.Linear(256,5)
+       # To change labels
+       self.fc3 = nn.Linear(256,16)
        #softmax activation function
        self.softmax = nn.LogSoftmax(dim=1)
        #define the forward pass
@@ -131,6 +151,7 @@ class BERT_Arch(nn.Module):
       x = self.relu(x)
       x = self.dropout(x)
       # output layer
+      # Change labels
       x = self.fc3(x)
 
       # apply softmax activation
@@ -150,13 +171,15 @@ optimizer = AdamW(model.parameters(), lr = 1e-3)
 
 from sklearn.utils.class_weight import compute_class_weight
 #compute the class weights
+# Change label number
 class_wts = compute_class_weight('balanced', classes=np.unique(train_labels), y=train_labels)
 print(class_wts)
 
 # convert class weights to tensor
 weights= torch.tensor(class_wts,dtype=torch.float)
 # loss function
-cross_entropy = nn.NLLLoss(weight=weights)
+# Change label numbers
+cross_entropy = nn.NLLLoss(weight=weights, ignore_index=-100, reduction='mean')
 
 import torch.optim.lr_scheduler as lr_scheduler
 # empty lists to store training and validation loss of each epoch
@@ -231,6 +254,20 @@ for epoch in range(epochs):
 
 print(f'\nTraining Loss: {train_loss:.3f}')
 
+# print The gradient loss curve
+
+# # After the training loop
+# plt.figure(figsize=(8, 6))  # Set the figure size as needed
+# plt.plot(range(1, epochs + 1), train_losses, color='white', label='Training Loss', linestyle='-', marker='', markersize=0)
+# plt.title('Training Loss Curve')
+# plt.xlabel('Epochs')
+# plt.ylabel('Loss')
+# plt.legend()
+# plt.gca().set_facecolor('blue')  # Set background color
+# plt.show()
+
+
+
 def get_prediction(str):
  str = re.sub(r'[^a-zA-Z ]+', '', str)
  test_text = [str]
@@ -259,7 +296,76 @@ def get_response(message):
     if i["tag"] == intent:
       result = random.choice(i["responses"])
       break
-  print(f"Response : {result}")
+  # print(f"Response : {result}")
   return "Intent: "+ intent + '\n' + "Response: " + result
 
-get_response('Hi')
+
+import tkinter as tk
+from tkinter import scrolledtext
+from tkinter import ttk
+
+# def animate_typing(text):
+#     chat_box.configure(state=tk.NORMAL)  # Enable editing
+#     chat_box.delete(1.0, tk.END)  # Clear existing text
+#     chat_box.insert(tk.END, "Bot: ")  # Add bot label
+#
+#     def add_char(index=0):
+#         if index < len(text):
+#             chat_box.insert(tk.END, text[index])
+#             chat_box.yview(tk.END)  # Automatically scroll to the latest message
+#             chat_box.after(50, lambda: add_char(index + 1))  # Delay between characters
+#         else:
+#             chat_box.configure(state=tk.DISABLED)  # Disable editing
+#
+#     add_char()  # Start the typing animation
+def on_send():
+    message = entry.get()
+    response = get_response(message)
+    # animate_typing(response)
+    chat_box.insert(tk.END, f"User: {message}\n{response}\n\n")
+    entry.delete(0, tk.END)
+def animate_typing(text):
+    chat_box.configure(state=tk.NORMAL)  # Enable editing
+    chat_box.delete(1.0, tk.END)  # Clear existing text
+    chat_box.insert(tk.END, "Bot: ")  # Add bot label
+
+    def add_char(index=0):
+        if index < len(text):
+            chat_box.insert(tk.END, text[index])
+            chat_box.yview(tk.END)  # Automatically scroll to the latest message
+            chat_box.after(50, lambda: add_char(index + 1))  # Delay between characters
+        else:
+            chat_box.configure(state=tk.DISABLED)  # Disable editing
+
+    add_char()  # Start the typing animation
+
+def clear_conversations():
+    chat_box.delete(1.0, tk.END)
+
+# Create the main window
+root = tk.Tk()
+root.title("Chatbot GUI")
+root.geometry("400x400")
+
+# Set the background color
+root.configure(bg="#872341")  # Set your desired background color code
+
+# Create and configure the chat box
+chat_box = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=40, height=10, font=("Arial", 12), bg="#F3EEEA")
+chat_box.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+
+
+# Create an entry widget for user input
+entry = tk.Entry(root, width=30, font=("Arial", 12), bg="#F3EEEA")
+entry.pack(pady=10)
+
+# Create a "Send" button
+send_button = tk.Button(root, text="Send", command=on_send, bg="#4CAF50", fg="white", font=("Arial", 12))
+send_button.pack(side=tk.TOP, pady=5)
+
+# Create a "Clear" button
+clear_button = tk.Button(root, text="Clear", command=clear_conversations, bg="#F44336", fg="white", font=("Arial", 12))
+clear_button.pack(side=tk.TOP, pady=5)
+
+# Start the Tkinter event loop
+root.mainloop()
